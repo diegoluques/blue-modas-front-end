@@ -1,0 +1,18 @@
+<header class="mb-5">
+    <div class="navbar navbar-light bg-light shadow-sm fixed-top">
+        <div class="container">
+            <div class="">
+                <a href="#" class="navbar-brand d-flex align-items-center">
+                    <strong class="text-primary">Blue &emsp; <label class="text-secondary"> Modas</label></strong>
+                </a>
+            </div>
+            <div class="col-4 d-flex justify-content-end">
+                <a class="link-secondary" [routerLink]="['/meu-carrinho']" aria-label="carrinho" onclick="">
+                    <img src="assets/icons/cart3-1.svg" aria-label="finalizar-compra" fill="currentColor" width="20"
+                        height="20">
+                    <span class="badge bg-warning rounded-pill">{{totalItensCarrinho}}</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>

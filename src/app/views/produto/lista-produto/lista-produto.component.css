@@ -1,0 +1,23 @@
+.text-start{
+    margin: 0px!important;
+}
+
+.titulo-produto{
+    min-height: 90px!important;
+    max-height: 90px!important;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titulo-produto:hover {
+    text-overflow: clip;
+    max-width: none
+  }
+  
+p small{
+    background: yellow!important;
+    padding: 0px 10px;
+    border-radius: 10px;
+}

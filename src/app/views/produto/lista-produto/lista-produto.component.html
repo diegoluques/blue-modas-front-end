@@ -1,0 +1,37 @@
+<main class="container mt-80 mb-80">
+    <div class="row g-0 text-center ">
+        <div class="col-md-3 col-sm-4 col-xs-1" *ngFor="let produto of produtos">
+            <div class="card m-2 shadow-sm rounded">
+                <img src="{{produto.urlImage}}" alt="{{produto.nomeProduto}}" class="card-img-top imgP" />
+                <div class="card-body">
+                    <div class="card-text titulo-produto">
+                        <small>{{produto.nomeProduto}}</small>
+                    </div>
+                    <p class="text-start">
+                        <small class="card-text ">Por apenas:</small>
+                    </p>
+                    <h3 class="card-text text-danger text-end">
+                        <strong>
+                            {{produto.precoProduto | currency :'BRL':'symbol':'1.2-2':'pt'}}
+                        </strong>
+                    </h3>
+                </div>
+                <div class="card-footer text-muted text-center">
+                    <div class="row">
+                        <a class="btn btn-primary" (click)="comprarItem(produto.produtoId, true)">
+                            <img src="assets/icons/cart-check.svg" aria-label="comprar">
+                            Comprar agora
+                        </a>
+                    </div>
+                    <div class="row mt-2">
+                        <a class="btn btn-secondary" (click)="comprarItem(produto.produtoId, false)">
+                            <img src="assets/icons/cart3.svg" aria-label="adicionar-carrinho">
+                            Adicionar ao carrinho
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-menu [totalItensCarrinho]="totalItensCarrinho"></app-menu>
+</main>

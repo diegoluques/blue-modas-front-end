@@ -1,0 +1,70 @@
+<main class="container mt-80 mb-80">
+    <div class="row g-0 text-start text-secondary">
+        <div class="py-4 text-center">
+            <h2>Identificação</h2>
+        </div>
+        <div class="row g-2">
+            <div class="col-md-6 col-lg-5 order-md-last">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-primary">Meu carrinho</span>
+                    <span class="badge bg-primary rounded-pill">{{qtdItens}}</span>
+                </h4>
+                <ul class="list-group mb-3">
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Total </span>
+                        <strong>{{valorTotal | currency :'BRL':'symbol':'1.2-2':'pt'}}</strong>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between lh-sm" *ngFor="let item of itens">
+                        <div>
+                            <small class="text-muted">{{item.quantidade}} - {{item.produto.nomeProduto}}</small>
+                        </div>
+                        <span class="text-muted">{{item.quantidade * item.valorUnitario | currency
+                            :'BRL':'symbol':'1.2-2':'pt'}}</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-6 col-lg-7">
+                <h4 class="mb-3">Meus dados</h4>
+                <form class="needs-validation" novalidate>
+                    <div class="row g-3">
+                        <div class="col-sm-12">
+                            <label for="nomeCliente" class="form-label">Nome</label>
+                            <input [(ngModel)]="nome" type="text" class="form-control" name="nome" placeholder="" value="" required>
+                            <div class="invalid-feedback">
+                                Nome é obrigatório.
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <label for="email" class="form-label">E-mail</label>
+                            <input [(ngModel)]="email" type="email" class="form-control" name="email" placeholder="seumelhor@email.com">
+                            <div class="invalid-feedback">
+                                E-mail é obrigatório
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label for="email" class="form-label">Telefone <span class="text-muted"></span></label>
+                            <input [(ngModel)]="telefone" type="tel" class="form-control" name="telefone" placeholder="">
+                            <div class="invalid-feedback">
+                                Telefone é obrigatório
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-check mt-2">
+                        <input type="checkbox" class="form-check-input" id="same-address">
+                        <small class="form-check-label" for="same-address">Aceito os Termos e condições.</small>
+                    </div> 
+                    <div *ngIf="errors" class="alert-danger p-2">
+                        {{errors}}
+                    </div>
+                    <hr class="my-4">
+                    <button class="w-100 btn btn-primary btn-lg" type="submit" (click)="finalizarCompra()" [disabled]="loading">Concluir
+                        compra
+                    </button>
+                    <a class="w-100 btn btn-outline-secondary btn-lg mt-2" [routerLink]="['/meu-carrinho']">Voltar ao
+                        carrinho
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
