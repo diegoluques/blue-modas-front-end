@@ -1,0 +1,45 @@
+<main class="container mt-4 mb-80">
+    <div class="row g-0 text-start text-secondary justify-content-center">
+        <div class="col">
+            <div class="py-1 text-start">
+                <h2>Produtos</h2>
+            </div>
+            <hr>
+            <button type="button" class="btn btn-sm btn-primary">Cadastrar novo</button>
+            <table class="table table-hover mt-4">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-center">Ações</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col" class="text-end">Preço Unitário</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let produto of produtos">
+                        <th class="text-center">
+                            <div class="row g-0 ">
+                                <div class="col">
+                                    <a class="btn" aria-label="editar-item" (click)="editarItem(produto)">
+                                        <img src="assets/icons/pencil-fill.svg" alt="editar-item" width="16"
+                                            height="20">
+                                    </a>
+                                </div>
+                                <div class="col">
+                                    <a class="btn" aria-label="deletar-item" (click)="deletarItem(produto.produtoId)">
+                                        <img src="assets/icons/x-circle.svg" alt="deletar-item" width="16" height="16">
+                                    </a>
+                                </div>
+                            </div>
+                        </th>
+                        <td>
+                            <small>
+                                {{produto.nomeProduto}}
+                            </small>
+                        </td>
+                        <td class="text-end">{{produto.precoProduto | currency :'BRL':'symbol':'1.2-2':'pt'}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
