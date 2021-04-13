@@ -1,13 +1,33 @@
-<main class="container mt-4 mb-80">
-    <div class="row g-0 text-start text-secondary justify-content-center">
-        <div class="col">
-            <div class="py-1 text-start">
-                <h2>Novo produto</h2>
+<button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+    data-bs-whatever="@mdo">Novo produto</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cadastro de produto </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <hr>
-     
-            <hr>
-            <button type="button" class="btn btn-sm btn-primary">Cadastrar novo</button>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Nome:</label>
+                        <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Preço:</label>
+                        <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="customFile">Imagem:</label>
+                        <input type="file" class="form-control" id="customFile" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-primary">Salvar</button>
+                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            </div>
         </div>
     </div>
-</main>
+</div>
