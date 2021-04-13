@@ -1,101 +1,108 @@
 <main class="container mt-80 mb-80">
     <div class="row g-0 text-start text-secondary">
         <app-menu [totalItensCarrinho]="totalItensCarrinho"></app-menu>
-        <h4>Meu carrinho</h4>
-        <hr>
-        <div class="row g-0 text-secondary">
-            <div class="col-md-6 col-sm-1 col-xs-1 text-start pe-3">
-                <span>Produto</span>
-            </div>
-            <div class="col-md-2 col-sm-1 col-xs-1 text-center">
-                <span>Quantidade</span>
-            </div>
-            <div class="col-md-2 col-sm-1 col-xs-1 text-end">
-                <span>Valor Unitário</span>
-            </div>
-            <div class="col-md-2 col-sm-1 col-xs-1 text-end pe-3">
-                <span>Valor Total</span>
-            </div>
+        <div *ngIf="itens == null" class="alert alert-warning decoration-none" role="alert">
+            Ops! Nenhum produto no carrinho. <a class="btn mb-1" [routerLink]="['/home']">Vamos adicionar?</a>
         </div>
-        <div class="row g-0 border-bottom bg-light" *ngFor="let item of itens">
-            <div class="col-md-1 col-sm-1 col-xs-1 ">
-                <img src="{{item.produto.urlImage}}" alt="{{item.produto.nomeProduto}}" height="100" />
+        <div *ngIf="itens?.length > 0">
+            <h4>Meu carrinho</h4>
+            <hr>
+            <div class="row g-0 text-secondary">
+                <div class="col-md-6 col-sm-1 col-xs-1 text-start pe-3">
+                    <span>Produto</span>
+                </div>
+                <div class="col-md-2 col-sm-1 col-xs-1 text-center">
+                    <span>Quantidade</span>
+                </div>
+                <div class="col-md-2 col-sm-1 col-xs-1 text-end">
+                    <span>Valor Unitário</span>
+                </div>
+                <div class="col-md-2 col-sm-1 col-xs-1 text-end pe-3">
+                    <span>Valor Total</span>
+                </div>
             </div>
-            <div class="col-md-5 col-sm-1 col-xs-1 text-start center-start">
-                {{item.produto.nomeProduto}}
-            </div>
-            <div class="col-md-2 col-sm-1 col-xs-1 mt-3">
-                <div class="row g-0 ">
-                    <div class="col-4 text-center">
-                        <a class="btn" aria-label="decrementar-item" (click)="decrementarItem(item)">
-                            <img src="assets/icons/dash-circle.svg" alt="decrementar-item" width="20" height="20">
+            <div class="row g-0 border-bottom bg-light" *ngFor="let item of itens">
+                <div class="col-md-1 col-sm-1 col-xs-1 ">
+                    <img src="{{item.produto.urlImage}}" alt="{{item.produto.nomeProduto}}" height="100" />
+                </div>
+                <div class="col-md-5 col-sm-1 col-xs-1 text-start center-start">
+                    {{item.produto.nomeProduto}}
+                </div>
+                <div class="col-md-2 col-sm-1 col-xs-1 mt-3">
+                    <div class="row g-0 ">
+                        <div class="col-4 text-center">
+                            <a class="btn" aria-label="decrementar-item" (click)="decrementarItem(item)">
+                                <img src="assets/icons/dash-circle.svg" alt="decrementar-item" width="20" height="20">
+                            </a>
+                        </div>
+                        <div class="col-4 text-center">
+                            <form>
+                                <input class="form-control me-2 text-center" type="quantidade" placeholder=""
+                                    aria-label="quantidade" value="{{item.quantidade}}" disabled>
+                            </form>
+                        </div>
+                        <div class="col-4 text-center">
+                            <a class="btn" aria-label="incrementar-item" (click)="incrementarItem(item)">
+                                <img src="assets/icons/plus-circle.svg" alt="incrementar-item" width="20" height="20">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row g-0  text-center mt-2 center">
+                        <a class="btn" aria-label="remover-item" (click)="removerItem(item.itemCompraId)">
+                            <img src="assets/icons/x-circle.svg" alt="remover-item" width="15" height="15">
                         </a>
                     </div>
-                    <div class="col-4 text-center">
-                        <form>
-                            <input class="form-control me-2 text-center" type="quantidade" placeholder=""
-                                aria-label="quantidade" value="{{item.quantidade}}" disabled>
-                        </form>
-                    </div>
-                    <div class="col-4 text-center">
-                        <a class="btn" aria-label="incrementar-item" (click)="incrementarItem(item)">
-                            <img src="assets/icons/plus-circle.svg" alt="incrementar-item" width="20" height="20">
-                        </a>
-                    </div>
                 </div>
-                <div class="row g-0  text-center mt-2 center">
-                    <a class="btn" aria-label="remover-item" (click)="removerItem(item.itemCompraId)">
-                        <img src="assets/icons/x-circle.svg" alt="remover-item" width="15" height="15">
-                    </a>
+                <div class="col-md-2 col-sm-1 col-xs-1 text-end pe-3 center">
+                    <h4 class="card-text text-secondary">
+                        <strong>
+                            {{item.produto.precoProduto | currency :'BRL':'symbol':'1.2-2':'pt'}}
+                        </strong>
+                    </h4>
+                </div>
+                <div class="col-md-2 col-sm-1 col-xs-1 text-end pe-3 center">
+                    <h4 class="card-text text-secondary">
+                        <strong>
+                            {{item.valorUnitario * item.quantidade | currency :'BRL':'symbol':'1.2-2':'pt'}}
+                        </strong>
+                    </h4>
                 </div>
             </div>
-            <div class="col-md-2 col-sm-1 col-xs-1 text-end pe-3 center">
-                <h4 class="card-text text-secondary">
-                    <strong>
-                        {{item.produto.precoProduto | currency :'BRL':'symbol':'1.2-2':'pt'}}
-                    </strong>
-                </h4>
-            </div>
-            <div class="col-md-2 col-sm-1 col-xs-1 text-end pe-3 center">
-                <h4 class="card-text text-secondary">
-                    <strong>
-                        {{item.valorUnitario * item.quantidade | currency :'BRL':'symbol':'1.2-2':'pt'}}
-                    </strong>
-                </h4>
-            </div>
-        </div>
-        <div class="row justify-content-end g-0">
-            <div class="col-5">
-                <hr>
-                <div class="row">
-                    <div class="col text-secondary">
-                        <label>{{itens?.length}} Produtos</label>
+            <div class="row justify-content-end g-0">
+                <div class="col-5">
+                    <hr>
+                    <div class="row">
+                        <div class="col text-secondary">
+                            <label>{{itens?.length}} Produtos</label>
+                        </div>
+                        <div class="col text-end pe-4 text-secondary">
+                            {{valorTotal | currency :'BRL':'symbol':'1.2-2':'pt'}}
+                        </div>
                     </div>
-                    <div class="col text-end pe-4 text-secondary">
-                        {{valorTotal | currency :'BRL':'symbol':'1.2-2':'pt'}}
+                    <hr>
+                    <div class="row">
+                        <div class="col text-secondary">
+                            <h4>Total</h4>
+                        </div>
+                        <div class="col text-end pe-4 text-info">
+                            <h4>
+                                {{valorTotal | currency :'BRL':'symbol':'1.2-2':'pt'}}</h4>
+                        </div>
                     </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col text-secondary">
-                        <h4>Total</h4>
-                    </div>
-                    <div class="col text-end pe-4 text-info">
-                        <h4>
-                            {{valorTotal | currency :'BRL':'symbol':'1.2-2':'pt'}}</h4>
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col">
-                        <a class="btn" aria-label="continuar-comprando" [routerLink]="['/home']">
-                            Continuar comprando
-                        </a>
-                    </div>
-                    <div class="d-grid gap-2 col">
-                        <button type="button" class="btn btn-success" [routerLink]="['/checkout']" [disabled]="itens?.length == 0">
-                            <img src="assets/icons/cart-check.svg" aria-label="finalizar-compra" >
-                            Finalizar compra
-                        </button>
+                    <div class="row mt-3">
+                        <div class="d-grid gap-2 col">
+                            <a class="btn btn-outline-secondary" aria-label="continuar-comprando"
+                                [routerLink]="['/home']">
+                                Continuar comprando
+                            </a>
+                        </div>
+                        <div class="d-grid gap-2 col">
+                            <button type="button" class="btn btn-success" [routerLink]="['/checkout']"
+                                [disabled]="itens?.length == 0">
+                                <img src="assets/icons/cart-check.svg" aria-label="finalizar-compra">
+                                Finalizar compra
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

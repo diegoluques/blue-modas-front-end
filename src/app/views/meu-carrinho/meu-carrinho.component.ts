@@ -15,7 +15,7 @@ export class MeuCarrinhoComponent implements OnInit {
   cesta: ResumoCesta;
   itens: Item[];
   valorTotal: Number;
-  totalItensCarrinho: number; 
+  totalItensCarrinho: number;
 
   constructor(
     private localStorageService: LocalStorageService,
@@ -30,12 +30,14 @@ export class MeuCarrinhoComponent implements OnInit {
   carregarInformacoes() {
     let idCestaCompra = this.localStorageService.buscar();
 
-    this.cestaCompraService.obterResumoCarrinho(idCestaCompra).subscribe(data => {
-      this.cesta = data;
-      this.itens = data.itens;
-      this.valorTotal = this.cesta.valorTotal;
-      this.totalItensCarrinho = data.itens.reduce((previous, current) => previous + current.quantidade, 0);
-    });
+    if (idCestaCompra) {
+      this.cestaCompraService.obterResumoCarrinho(idCestaCompra).subscribe(data => {
+        this.cesta = data;
+        this.itens = data.itens;
+        this.valorTotal = this.cesta.valorTotal;
+        this.totalItensCarrinho = data.itens.reduce((previous, current) => previous + current.quantidade, 0);
+      });
+    }
   }
 
   continuarComprando() {
