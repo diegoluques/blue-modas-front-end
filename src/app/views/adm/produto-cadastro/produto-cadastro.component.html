@@ -11,21 +11,21 @@
             <div class="modal-body">
                 <form>
                     <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">Nome:</label>
-                        <input type="text" class="form-control" id="recipient-name">
+                        <label for="nome" class="col-form-label">Nome:</label>
+                        <input [(ngModel)]="nome" name="nome" type="text" class="form-control" id="name">
                     </div>
                     <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Preço:</label>
-                        <input type="text" class="form-control" id="recipient-name">
+                        <input [(ngModel)]="preco" name="preco" type="text" class="form-control" id="preco">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" for="customFile">Imagem:</label>
-                        <input type="file" class="form-control" id="customFile" />
+                        <label class="form-label" for="imagem">Imagem:</label>
+                        <input [(ngModel)]="imagem" name="imagem" type="file" class="form-control" id="imagem" />
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-primary">Salvar</button>
+                <button type="button" class="btn btn-sm btn-primary" (click)="cadastrarProduto()" [disabled]="loading">Salvar</button>
                 <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancelar</button>
             </div>
         </div>
