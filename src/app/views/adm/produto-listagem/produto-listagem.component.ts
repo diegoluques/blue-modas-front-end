@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core'; 
 import { Produto } from 'src/app/models/produto';
 import { ProdutoService } from 'src/app/services/produto.service';
+import { ProdutoCadastroComponent } from '../produto-cadastro/produto-cadastro.component';
 
 @Component({
   selector: 'app-produto-listagem',
@@ -12,11 +13,17 @@ export class ProdutoListagemComponent implements OnInit {
   produtos: Produto[];
   totalItensCarrinho: number;
 
+  @ViewChild("produtoCadastroComponent") child: ProdutoCadastroComponent ;
+
   constructor(
     private produtoService: ProdutoService,
   ) { }
 
   ngOnInit(): void {
+    this.obterProdutros(); 
+  }
+
+  handleRefreshEvent(opt: String) {
     this.obterProdutros();
   }
 
@@ -28,9 +35,18 @@ export class ProdutoListagemComponent implements OnInit {
   }
 
   deletarItem(idProduto: number) {
-    this.produtoService.deletarProduto(idProduto).subscribe(data => {
-      this.obterProdutros();
-    });
+    if (confirm('Excluir produto?')) {
+
+      this.produtoService.deletarProduto(idProduto).subscribe(data => {
+        this.obterProdutros();
+      });
+    }
+  }
+
+  
+  editarItem(produto) {
+    
+    this.child.editarProduto(produto);
   }
 
 }

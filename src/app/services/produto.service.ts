@@ -17,9 +17,9 @@ export class ProdutoService extends ServiceBaseService {
       .post<Produto>(this.UrlBack + "/produto", data);
   }
   
-  atualizarProduto(idProduto: number): Observable<String> {
+  atualizarProduto(idProduto: string, data: any): Observable<String> {
     return this.http
-      .put<String>(this.UrlBack + `/produto/${idProduto}`, "");
+      .put<String>(this.UrlBack + `/produto/${idProduto}`, data);
   }
 
   deletarProduto(idProduto: number): Observable<any> {

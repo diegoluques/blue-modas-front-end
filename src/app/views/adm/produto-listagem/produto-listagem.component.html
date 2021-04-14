@@ -16,7 +16,7 @@
                 </div>
             </div>
             <hr>
-            <app-produto-cadastro></app-produto-cadastro>
+            <app-produto-cadastro #produtoCadastroComponent (refreshEvent)="handleRefreshEvent($event)"></app-produto-cadastro>
             <table class="table table-hover mt-4">
                 <thead>
                     <tr>

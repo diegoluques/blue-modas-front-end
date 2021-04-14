@@ -11,14 +11,15 @@
 </p>
 
 ## <p id='home'>🏪 Blue Modas </p>
-A Blue Modas é uma plataforma de e-commerce, com o objetivo de efetuar vendas on-line.
+A Blue Modas é uma plataforma de e-commerce com o objetivo de efetuar vendas on-line para uma loja de roupas.
 
 ## <p id='functionalities'> ⚙ Funcionalidades </p>
 1. Exibir produtos disponíveis para compra.
 2. Visualizar produtos adicionados no carrinho.
-3. Identificação para finalizar compra.
-4. Visualizar pedido de compra realizada.
-5. Visão administrador, para cadastro e listagem de produtos.
+3. Incrementar, decrementar e remover produto do carrinho.
+4. Identificação para finalizar compra.
+5. Visualizar pedido de compra realizada.
+6. Visão administrador, para cadastro e listagem de produtos.
 
 ## <p id='tecnologies'>💻 Tecnologias </p>
 Este projeto foi desenvolvido com as seguintes tecnologias:
