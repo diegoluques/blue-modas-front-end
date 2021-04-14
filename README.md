@@ -13,6 +13,8 @@
 ## <p id='home'>🏪 Blue Modas </p>
 A Blue Modas é uma plataforma de e-commerce com o objetivo de efetuar vendas on-line para uma loja de roupas.
 
+[![](http://img.youtube.com/vi/1gKjrye5xv8/0.jpg)](http://www.youtube.com/watch?v=1gKjrye5xv8 "Blue Modas | e-Commerce")
+
 ## <p id='functionalities'> ⚙ Funcionalidades </p>
 1. Exibir produtos disponíveis para compra.
 2. Visualizar produtos adicionados no carrinho.
@@ -31,8 +33,6 @@ Este projeto foi desenvolvido com as seguintes tecnologias:
 
 ## <p id='layout'>🎨 Layout ? </p>
 Abaixo é apresentadas as telas do e-commerce.
-
-[![](http://img.youtube.com/vi/1gKjrye5xv8/0.jpg)](http://www.youtube.com/watch?v=1gKjrye5xv8 "Blue Modas | e-Commerce")
 
 1. Home
 ![image](https://user-images.githubusercontent.com/55838972/114640362-efafb380-9c9d-11eb-9bbd-d9257f09c0c2.png)
