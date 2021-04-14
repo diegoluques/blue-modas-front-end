@@ -1,17 +1,29 @@
 <main class="container mt-4 mb-80">
+    <div class="text-center">
+        <h2 class="text-primary">Blue &emsp; <label class="text-secondary"> Modas</label></h2>
+    </div>
     <div class="row g-0 text-start text-secondary justify-content-center">
         <div class="col">
-            <div class="py-1 text-start">
-                <h2>Produtos</h2>
+            <div class="row py-1 ">
+                <div class="col text-start">
+                    <h3>Produtos</h3>
+                </div>
+                <div class="col text-end">
+                    <a href="" class="btn btn-sm btn-warning">
+                        <img src="assets/icons/shop-window.svg" aria-label="finalizar-compra" width="20" height="20">
+                        visualizar loja
+                    </a>
+                </div>
             </div>
             <hr>
             <app-produto-cadastro></app-produto-cadastro>
             <table class="table table-hover mt-4">
                 <thead>
                     <tr>
-                        <th scope="col" class="text-center">Ações</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col" class="text-end">Preço</th>
+                        <th scope="col" class="text-center text-secondary">Ações</th>
+                        <th scope="col" class="text-center text-secondary">ID</th>
+                        <th scope="col" class="text-star text-secondary">Nome</th>
+                        <th scope="col" class="text-end text-secondary">Preço</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,6 +43,11 @@
                                 </div>
                             </div>
                         </th>
+                        <td class="text-center">
+                            <small>
+                                {{produto.produtoId}}
+                            </small>
+                        </td>
                         <td>
                             <small>
                                 {{produto.nomeProduto}}

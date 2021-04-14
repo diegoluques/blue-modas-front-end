@@ -23,7 +23,8 @@ export class ProdutoListagemComponent implements OnInit {
   obterProdutros() {
     this.produtoService.obterProdutros().subscribe(data => {
       this.produtos = data
-    })
+      this.produtos.sort((a, b) => b.produtoId - a.produtoId)
+    });
   }
 
   deletarItem(idProduto: number) {

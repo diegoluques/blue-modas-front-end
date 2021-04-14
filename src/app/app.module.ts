@@ -17,6 +17,8 @@ import { CestaCompraService } from './services/cesta-compra.service';
 import { CheckoutComponent } from './views/checkout/checkout.component';
 import { CompraRealizadaComponent } from './views/compra-realizada/compra-realizada.component'; 
 import { FormsModule } from '@angular/forms';
+import { ProdutoCadastroComponent } from './views/adm/produto-cadastro/produto-cadastro.component';
+import { ProdutoListagemComponent } from './views/adm/produto-listagem/produto-listagem.component';
 registerLocaleData(localePt);
 
 @NgModule({
@@ -28,7 +30,9 @@ registerLocaleData(localePt);
     FooterComponent,
     MeuCarrinhoComponent, 
     CheckoutComponent,
-    CompraRealizadaComponent, 
+    CompraRealizadaComponent,
+    ProdutoCadastroComponent,
+    ProdutoListagemComponent, 
   ],
   imports: [
     BrowserModule,

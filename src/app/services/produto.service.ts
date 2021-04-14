@@ -12,4 +12,19 @@ export class ProdutoService extends ServiceBaseService {
       .get<Produto[]>(this.UrlBack + "/produto");
   }
 
+  cadastrarProduto(data): Observable<Produto> {
+    return this.http
+      .post<Produto>(this.UrlBack + "/produto", data);
+  }
+  
+  atualizarProduto(idProduto: number): Observable<String> {
+    return this.http
+      .put<String>(this.UrlBack + `/produto/${idProduto}`, "");
+  }
+
+  deletarProduto(idProduto: number): Observable<any> {
+    return this.http
+      .delete(this.UrlBack + `/produto/${idProduto}`);
+  }
+
 }
